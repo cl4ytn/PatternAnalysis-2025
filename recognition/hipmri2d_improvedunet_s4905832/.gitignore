@@ -1,0 +1,11 @@
+*.pt
+runs/
+data/
+checkpoints/
+# model artefacts
+logs/
+figs_test/
+__pycache__/
+*.png
+*.out
+
