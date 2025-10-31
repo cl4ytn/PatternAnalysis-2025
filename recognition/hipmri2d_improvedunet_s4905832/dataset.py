@@ -89,5 +89,7 @@ class HipMRISlices(Dataset):
 def make_loader(pairs, batch_size=8, shuffle=True, **kwargs):
     """Return a DataLoader for given (image,label) pairs."""
     ds = HipMRISlices(pairs, **kwargs)
-    return DataLoader(ds, batch_size=batch_size, shuffle=shuffle, num_workers=4, pin_memory=True)
-
+    import os
+    num_workers = min(4, os.cpu_count() // 2 or 1)
+    return DataLoader(ds, batch_size=batch_size, shuffle=shuffle,
+                      num_workers=num_workers, pin_memory=True)
